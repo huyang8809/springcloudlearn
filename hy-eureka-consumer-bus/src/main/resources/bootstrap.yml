@@ -1,0 +1,33 @@
+
+server:
+  port: 1007
+spring:
+  application:
+    name: hy-eureka-consumer-bus
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: hy-config-server-bus
+      label: master
+      profile: test
+    bus:
+      enabled: true
+      trace:
+        enabled: true
+  rabbitmq:
+    host: 192.168.0.101
+    port: 5672
+    username: guest
+    password: guest
+
+
+management:
+    endpoints:
+        web:
+            exposure:
+                include: bus-refresh
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1001/eureka

@@ -1,0 +1,23 @@
+
+server:
+  port: 1006
+spring:
+  application:
+    name: hy-config-server-mysql
+  profiles:
+    active: jdbc
+  cloud:
+    config:
+      label: master
+      server:
+        jdbc:
+          sql:  SELECT `KEY`, `VALUE` from PROPERTIES where APPLICATION=? and PROFILE=? and LABEL=?
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_microserver_config
+    username: root
+    password: root
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1001/eureka

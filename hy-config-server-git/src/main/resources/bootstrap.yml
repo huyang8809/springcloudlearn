@@ -1,0 +1,16 @@
+
+server:
+  port: 1005
+spring:
+  application:
+    name: hy-config-server-git
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/pecado/config-server/
+          searchPaths: config
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1001/eureka
